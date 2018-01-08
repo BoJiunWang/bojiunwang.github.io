@@ -216,7 +216,7 @@
 }
 
 .oi-bug:before {
-    color: #f00;
+    color: #F44336;
     font-size: 12px;
     content: '\e028'
 }

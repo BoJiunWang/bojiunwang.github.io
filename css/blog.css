@@ -4,7 +4,7 @@
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 @media (min-width: 48em) {
     html {
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 
@@ -63,7 +63,7 @@ h6,
     padding: 1rem;
     font-weight: 500;
     color: #cdddeb;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .nav-link:hover,
@@ -106,7 +106,7 @@ h6,
 
 .blog-title {
     margin-bottom: 0;
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: normal;
     color: #000;
 }
@@ -119,7 +119,7 @@ h6,
 
 @media (min-width: 40em) {
     .blog-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 }
 
@@ -170,7 +170,7 @@ h6,
 
 .blog-post-title {
     margin-bottom: .25rem;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .blog-post-meta {

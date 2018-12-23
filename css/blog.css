@@ -10,7 +10,8 @@
 
 body {
     font-family: 'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體', "Helvetica Neue", Helvetica, Arial, serif;
-    color: #616161;
+    color: #424242;
+    background-color: #ECEFF1;
 }
 
 h1,
@@ -63,7 +64,7 @@ h6,
     padding: 1rem;
     font-weight: 500;
     color: #cdddeb;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .nav-link:hover,
@@ -193,4 +194,29 @@ h6,
 
 .blog-footer p:last-child {
     margin-bottom: 0;
+}
+
+/*
+ * My Style
+ */
+ 
+.table th,
+.table td {
+  padding: 0.5rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #FFF59D;
+}
+
+.table-success,
+.table-success > th,
+.table-success > td {
+    background-color: #9CCC65;
+}
+
+.text-info {
+    color: #0097A7 !important;
 }

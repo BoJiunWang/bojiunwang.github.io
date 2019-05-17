@@ -219,3 +219,7 @@ h6,
 .text-info {
     color: #0097A7 !important;
 }
+
+.tooltip {
+    font-size: 0.8em;
+}

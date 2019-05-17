@@ -1,7 +1,7 @@
 /*
  * Globals
  */
-@import url('https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans+TC&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Noto+Sans+TC&display=swap');
 @media (min-width: 48em) {
     html {
         font-size: 1.25em;
@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: 'Google Sans', 'Noto Sans TC', "Helvetica Neue", Helvetica, 'Microsoft JhengHei', '微軟正黑體', Arial, serif;
+    font-family: 'Roboto', "Helvetica Neue", Helvetica, 'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體', Arial, serif;
     color: #424242;
 }
 
@@ -25,7 +25,6 @@ h5,
 .h5,
 h6,
 .h6 {
-    font-family: 'Google Sans', 'Noto Sans TC', "Helvetica Neue", Helvetica, 'Microsoft JhengHei', '微軟正黑體', Arial, serif;
     font-weight: normal;
     color: #333;
 }

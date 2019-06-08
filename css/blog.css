@@ -51,6 +51,10 @@ a:hover {
     font-size: 0.8em;
 }
 
+.lead {
+    font-weight:400;
+}
+
 /* Masthead for nav */
 
 .blog-masthead {

@@ -1,19 +1,34 @@
 /* Globals */
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC|Roboto:400,400i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,400i,500|Roboto:400,400i,500&display=swap&subset=chinese-traditional');
 @media (min-width: 48em) {
     html {
         font-size: 1.25em;
     }
 }
 
-body, .tooltip {
+body {
     font-family: 'Roboto', 'Noto Sans TC', "Helvetica Neue", Helvetica, 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
+    font-weight: 400;
     background: #F5F5F5;
     color: #212121;
 }
 
-hr{
+.tooltip {
+    font-family: 'Roboto', 'Noto Sans TC', "Helvetica Neue", Helvetica, 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
+    font-weight: 400;
+}
+
+hr {
     border-top: 1px solid #BDBDBD;
+}
+
+a {
+    color: #448AFF;
+}
+
+a:hover {
+    font-weight: 500;
+    color: #388E3C;
 }
 
 /* Override Bootstrap's default container. */
@@ -27,8 +42,9 @@ hr{
 }
 
 .text-info {
-    font-weight: bold;
-    color: #585A56 !important;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #33691E !important;
 }
 
 .tooltip {
@@ -91,7 +107,7 @@ hr{
     margin-bottom: 0;
     font-size: 1.35rem;
     font-weight: normal;
-    color: #000;
+    color: #000000;
 }
 
 .blog-description {
@@ -114,7 +130,7 @@ hr{
 
 .blog-post-title {
     margin-bottom: .25rem;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
 }
 
 .blog-post-meta {
@@ -142,18 +158,27 @@ hr{
 .table td {
     padding: 0.5rem;
     vertical-align: middle;
-    border-top: 1px solid #C2D3DA;
+}
+
+.table-custom,
+.table-custom > th,
+.table-custom > td {
+    color:#1B1924;
+    background-color: #B5C1B4;
+}
+
+.table-hover .table-custom:hover {
+    color: #B5C1B4;
+    background-color: #74593D;
+}
+
+.table-hover tbody {
+    color: #1B1924;
 }
 
 .table-hover tbody tr:hover {
-    background-color: #C2D3DA;
-}
-
-.table-success,
-.table-success > th,
-.table-success > td {
-    color:#272424;
-    background-color: #81A3A7;
+    color: #B5C1B4;
+    background-color: #74593D;
 }
 
 /* This site color design refer to Google Material Design and "https://www.bfa.com.tw/blog/2016/50-color-combinations" */

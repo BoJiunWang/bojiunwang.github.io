@@ -20,4 +20,4 @@ $(function() {
         $('#bug').tooltip('hide');
         $(this).remove();
     }); 
-})();
+});

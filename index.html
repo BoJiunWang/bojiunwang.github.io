@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
     <!-- 
-    if(!pain){
-        gain = null;
-    }
+        if(!pain){
+            gain = null;
+        }
     -->
     <head>
         <meta charset="utf-8">
@@ -17,10 +17,10 @@
         <link rel="stylesheet" href="./css/bootstrap.css">
         <link rel="stylesheet" href="./css/blog.css">
         <link rel="icon" type="image/x-icon" sizes="32x32" href="./images/icon.png" />
-        <script src="./js/fontawesome.min.js"></script>
     </head>
 
     <body>
+
         <div class="blog-masthead">
             <div class="container">
                 <nav class="nav">
@@ -28,6 +28,7 @@
                 </nav>
             </div>
         </div>
+
         <div class="blog-header">
             <div class="container">
                 <div class="row justify-content-center">
@@ -181,12 +182,14 @@
             <a href="https://myweb.ntut.edu.tw/~t105598012/" target="_blank"></a>
             <a href="https://myweb.ntut.edu.tw/~t101590340/" target="_blank"></a>
         </footer>
+
         <div id="naughty-bug" style="display:none">
             <span id="bug" class="fa-stack fa-spin" data-toggle="tooltip" data-placement="right" title="Yes, I'm a bug..." style="color: #F44336;font-size: 0.6rem;vertical-align: bottom">
                 <i class="far fa-circle fa-stack-2x"></i>
                 <i class="fas fa-bug fa-stack-1x"></i>
             </span>
         </div>
+
         <script>
             (function(i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
@@ -201,32 +204,10 @@
             ga('create', 'UA-105141569-1', 'auto');
             ga('send', 'pageview');
         </script>
+        <script src="./js/fontawesome.min.js"></script>
         <script src="./js/jquery-3.3.1.min.js"></script>
         <script src="./js/popper.min.js"></script>
         <script src="./js/bootstrap.js"></script>
         <script src="./js/main.js"></script>
-        <script>
-            (function(){
-                var divSize = ((Math.random()*100) + 50).toFixed();
-                var posX = (Math.random() * ($(document).width() - divSize)).toFixed();
-                var posY = (Math.random() * ($(document).height() - divSize)).toFixed();
-                var timer = window.setInterval(function(){
-                                $('#bug').css({
-                                    'color':'#'+ Math.round(0xffffff * Math.random()).toString(16)
-                                });
-                            }, 1000);
-
-                $('#naughty-bug').css({
-                    'position':'absolute',
-                    'left':posX+'px',
-                    'top':posY+'px',
-                });
-                $('#naughty-bug').fadeIn(1000).delay(8000).fadeOut(1000, function(){
-                    clearInterval(timer);
-                    $('#bug').tooltip('hide');
-                    $(this).remove();
-                }); 
-            })();
-        </script>
     </body>
 </html>

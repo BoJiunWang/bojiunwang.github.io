@@ -1,8 +1,7 @@
 $(function() {
-    $('[data-toggle="tooltip"]').each(function(){
-        $(this).tooltip();
-    });
-
+    $('#bug').tooltip();
+    $('#thesis').tooltip();
+    
     var divSize = ((Math.random()*100) + 50).toFixed();
     var posX = (Math.random() * ($(document).width() - divSize)).toFixed();
     var posY = (Math.random() * ($(document).height() - divSize)).toFixed();

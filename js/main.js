@@ -16,7 +16,7 @@ $(function() {
     $('#naughty-bug').css({
         'position': 'absolute',
         'left': posX+'px',
-        'top': posY+'px',
+        'top': posY+'px'
     });
     
     $('#naughty-bug').fadeIn(1000).delay(8000).fadeOut(1000, function(){

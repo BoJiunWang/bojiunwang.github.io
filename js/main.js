@@ -24,4 +24,11 @@ $(function() {
         $('#bug').tooltip('hide');
         $(this).remove();
     }); 
+
+    if(window.matchMedia("(prefers-color-scheme: dark)"))
+        $("body").addClass("dark-mode");
 });
+
+function toggleDarkLight() {
+    $("body").toggleClass("dark-mode");
+}

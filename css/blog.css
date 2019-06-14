@@ -1,11 +1,5 @@
 /* Globals */
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,500|Roboto:400,400i,500,500i&display=swap&subset=chinese-traditional');
-@media (min-width: 48em) {
-    html {
-        font-size: 1.25em;
-    }
-}
-
 body {
     font-family: 'Roboto', 'Noto Sans TC', "Helvetica Neue", Helvetica, 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
     font-weight: 400;
@@ -42,7 +36,7 @@ a:hover {
 }
 
 .text-info {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 500;
     color: #33691E !important;
 }
@@ -70,7 +64,7 @@ a:hover {
     position: relative;
     padding: 1rem;
     font-weight: 500;
-    color: #cdddeb;
+    color: #CDDDEB;
     font-size: 1.2rem;
 }
 
@@ -109,7 +103,7 @@ a:hover {
 
 .blog-title {
     margin-bottom: 0;
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     font-weight: normal;
     color: #000000;
 }
@@ -120,12 +114,6 @@ a:hover {
     color: #607D8B;
 }
 
-@media (min-width: 40em) {
-    .blog-title {
-        font-size: 2.2rem;
-    }
-}
-
 /* Blog posts */
 
 .blog-post {
@@ -134,12 +122,7 @@ a:hover {
 
 .blog-post-title {
     margin-bottom: .25rem;
-    font-size: 1.4rem;
-}
-
-.blog-post-meta {
-    margin-bottom: 1.25rem;
-    color: #999;
+    font-size: 1.3rem;
 }
 
 /* Footer */
@@ -165,14 +148,13 @@ a:hover {
     vertical-align: middle;
 }
 
-.table-custom,
-.table-custom > th,
-.table-custom > td {
+.thead-custom,
+.thead-custom > th {
     color:#1B1924;
     background-color: #B5C1B4;
 }
 
-.table-hover .table-custom:hover {
+.thead-custom:hover {
     color: #B5C1B4;
     background-color: #74593D;
 }
@@ -184,6 +166,58 @@ a:hover {
 .table-hover tbody tr:hover {
     color: #B5C1B4;
     background-color: #74593D;
+}
+
+.gray-out {
+    font-style:italic;
+    color:#BDBDBD;
+}
+
+@media (min-width: 40em) {
+    html {
+        font-size: 1.25em;
+    }
+
+    .blog-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+      color: #BDBDBD;
+      background-color: #000000;
+    }
+
+    .blog-masthead {
+        background-color: #01579B;
+    }
+
+    .blog-title {
+        color: #FAFAFA;   
+    }
+
+    .nav-link.active {
+        color: #000000;
+    }
+
+    .table-hover tbody {
+        color: #BDBDBD;
+    }
+
+    .table-hover tbody tr:hover {
+        color: #FFFFFF;
+    }
+
+    .gray-out {
+        color:#1D1D1D;
+    }
+
+    .blog-footer {
+        background-color: #323232;
+        color: #A0A0A0;
+        border-top: .05rem solid #707070;
+    }
 }
 
 /* This site color design refer to Google Material Design and "https://www.bfa.com.tw/blog/2016/50-color-combinations" */

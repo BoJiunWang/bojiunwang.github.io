@@ -25,7 +25,7 @@ $(function() {
         $(this).remove();
     }); 
 
-    if(window.matchMedia("(prefers-color-scheme: dark)"))
+    if(window.matchMedia("(prefers-color-scheme: dark)").matches)
         $("body").addClass("dark-mode");
 });
 

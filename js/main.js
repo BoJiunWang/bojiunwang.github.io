@@ -37,7 +37,7 @@ function cancelOpacityAndRunScale(element) {
     element.style.opacity = 1;
     $(element).addClass('runScale');
     element.addEventListener('animationend', function () {
-        element.style.opacity = 0.1;
+        element.style.opacity = 0.25;
         $(element).removeClass('runScale')
     });
 }

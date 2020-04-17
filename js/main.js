@@ -32,3 +32,12 @@ $(function() {
 function toggleDarkLight() {
     $("body").toggleClass("dark-mode");
 }
+
+function cancelOpacityAndRunScale(element) {
+    element.style.opacity = 1;
+    $(element).addClass('runScale');
+    element.addEventListener('animationend', function () {
+        element.style.opacity = 0.1;
+        $(element).removeClass('runScale')
+    });
+}

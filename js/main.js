@@ -27,6 +27,9 @@ $(function () {
 
     if (window.matchMedia("(prefers-color-scheme: dark)").matches)
         $("body").addClass("dark-mode");
+    
+    // Best Wishes for YOU
+    console.log("---\nMay the grace of the Lord Jesus Christ, and the love of God,\nand the fellowship of the Holy Spirit be with you all.\n(2 Corinthians 13:14, New International Version)\n---")
 });
 
 function toggleDarkLight() {

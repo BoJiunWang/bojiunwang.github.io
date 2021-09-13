@@ -18,11 +18,13 @@ hr {
 
 a {
     color: #448AFF;
+    text-decoration: none;
 }
 
 a:hover {
     font-weight: 500;
     color: #388E3C;
+    text-decoration: underline;
 }
 
 /* Override Bootstrap's default container. */
@@ -224,19 +226,26 @@ body.dark-mode .blog-footer {
     color: #A0A0A0;
 }
 
-body.dark-mode .bs-tooltip-bottom .arrow::before{
+body.dark-mode .bs-tooltip-bottom .tooltip-arrow::before{
     border-bottom-color: #CFD8DC;
 }
 
-body.dark-mode .bs-tooltip-top .arrow::before{
+body.dark-mode .bs-tooltip-top .tooltip-arrow::before{
     border-top-color: #CFD8DC;
 }
 
-body.dark-mode .bs-tooltip-left .arrow::before{
+body.dark-mode .bs-tooltip-left .tooltip-arrow::before{
     border-left-color: #CFD8DC;
 }
 
-body.dark-mode .bs-tooltip-right .arrow::before{
+body.dark-mode .bs-tooltip-right .tooltip-arrow::before{
+    border-right-color: #CFD8DC;
+}
+
+body.dark-mode .bs-tooltip-auto .tooltip-arrow::before{
+    border-right-color: #CFD8DC;
+}
+body.dark-mode .bs-tooltip-end .tooltip-arrow::before{
     border-right-color: #CFD8DC;
 }
 

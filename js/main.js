@@ -29,7 +29,10 @@ $(function () {
         $("body").addClass("dark-mode");
     
     // Best Wishes for YOU
-    console.log("---\nMay the grace of the Lord Jesus Christ, and the love of God,\nand the fellowship of the Holy Spirit be with you all.\n(2 Corinthians 13:14, New International Version)\n---")
+    let WHITE = "color:#FFFFFF";
+    let YELLOW = "color:#FFD600";
+    let BLUE = "color:#0091EA";
+    console.log("%c---\nMay the " + "%cgrace" + "%c of the " + "%cLord Jesus Christ" + "%c, and the " + "%clove" + "%c of " + "%cGod" + "%c,\nand the " + "%cfellowship" + "%c of the " + "%cHoly Spirit" + "%c be with you all.\n" + "%c(2 Corinthians 13:14, New International Version)" + "%c\n---", WHITE, BLUE, WHITE, YELLOW, WHITE, BLUE, WHITE, YELLOW, WHITE, BLUE, WHITE, YELLOW, WHITE, "font-style:italic", "font-style: normal");    
 });
 
 function toggleDarkLight() {

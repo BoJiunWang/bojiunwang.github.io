@@ -244,6 +244,10 @@ body.dark-mode .bs-tooltip-end .tooltip-arrow::before{
     border-right-color: #CFD8DC;
 }
 
+body.dark-mode .bs-tooltip-start .tooltip-arrow::before{
+    border-left-color: #CFD8DC;
+}
+
 body.dark-mode .tooltip-inner{
     background-color: #CFD8DC;
     color: #000000;

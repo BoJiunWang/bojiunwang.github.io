@@ -239,9 +239,15 @@ body.dark-mode .bs-tooltip-right .tooltip-arrow::before{
 
 body.dark-mode .bs-tooltip-auto .tooltip-arrow::before{
     border-right-color: #CFD8DC;
+    border-left-color: #CFD8DC;
+    border-top-color: #CFD8DC;
+    border-bottom-color: #CFD8DC;
 }
 body.dark-mode .bs-tooltip-end .tooltip-arrow::before{
     border-right-color: #CFD8DC;
+    border-left-color: #CFD8DC;
+    border-top-color: #CFD8DC;
+    border-bottom-color: #CFD8DC;
 }
 
 body.dark-mode .tooltip-inner{

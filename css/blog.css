@@ -237,15 +237,12 @@ body.dark-mode .bs-tooltip-right .tooltip-arrow::before{
     border-right-color: #CFD8DC;
 }
 
-body.dark-mode .bs-tooltip-auto .tooltip-arrow::before{
-    border-right-color: #CFD8DC;
-}
-body.dark-mode .bs-tooltip-end .tooltip-arrow::before{
-    border-right-color: #CFD8DC;
-}
-
 body.dark-mode .bs-tooltip-start .tooltip-arrow::before{
     border-left-color: #CFD8DC;
+}
+
+body.dark-mode .bs-tooltip-end .tooltip-arrow::before{
+    border-right-color: #CFD8DC;
 }
 
 body.dark-mode .tooltip-inner{

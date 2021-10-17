@@ -17,6 +17,7 @@ hr {
 }
 
 a {
+    font-weight: 400;
     color: #448AFF;
     text-decoration: none;
 }
@@ -162,13 +163,8 @@ a:hover {
     background-color: #74593D;
 }
 
-.table-hover tbody {
+.table tbody {
     color: #1B1924;
-}
-
-.table-hover tbody tr:hover {
-    color: #B5C1B4;
-    background-color: #74593D;
 }
 
 @media (min-width: 40em) {
@@ -198,12 +194,8 @@ body.dark-mode .nav-link.active {
     color: #000000;
 }
 
-body.dark-mode .table-hover tbody {
+body.dark-mode .table tbody {
     color: #BDBDBD;
-}
-
-body.dark-mode .table-hover tbody tr:hover {
-    color: #FFFFFF;
 }
 
 body.dark-mode .thead-custom,
@@ -288,9 +280,9 @@ body.dark-mode .text-info {
   /* The typing effect */
 @keyframes typing {
     from {width: 0%}
-    to {width: 85%;}
+    to {width: 87%;}
     0% {  width: 0% }
-    75% {  width: 85% }
+    75% {  width: 87% }
 }
   
   /* The typewriter cursor effect */

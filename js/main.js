@@ -47,7 +47,7 @@ function cancelOpacityAndRunScale(element) {
     // Create New Logo String
     var logoStrDiv = document.createElement('div');
     logoStrDiv.setAttribute("id", "logoStr");
-    logoStrDiv.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#2F9BD6;font-weight:700">GAME</span><span style="color:#EF8218;font-weight:700">SOFa</span>';
+    logoStrDiv.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#359AD6;font-weight:700">GAME</span><span style="color:#EF8018;font-weight:700">SOFa</span>';
     element.appendChild(logoStrDiv);
 
     // Update Logo Opacity

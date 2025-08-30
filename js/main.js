@@ -1,123 +1,153 @@
-$(function () {
-    // Initialize Bootstrap 5 tooltips
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-
-    var divSize = ((Math.random() * 100) + 50).toFixed();
-    var posX = (Math.random() * ($(document).width() - divSize)).toFixed();
-    var posY = (Math.random() * ($(document).height() - divSize)).toFixed();
-
-    var timer = window.setInterval(function () {
-        $('#bug').css({
-            'color': '#' + Math.round(0xffffff * Math.random()).toString(16)
-        });
-    }, 1000);
-
-    $('#naughty-bug').css({
-        'position': 'absolute',
-        'left': posX + 'px',
-        'top': posY + 'px'
-    });
-
-    $('#naughty-bug').fadeIn(1000).delay(8000).fadeOut(1000, function () {
-        clearInterval(timer);
-        $('#bug').tooltip('hide');
-        $(this).remove();
-    });
-
-    /**
-     * Bootstrap 5 Native Dark Mode Toggler
-     */
-    const themeManager = {
-        getStoredTheme: () => localStorage.getItem('theme'),
-        setStoredTheme: theme => localStorage.setItem('theme', theme),
-
-        getPreferredTheme: () => {
-            const storedTheme = themeManager.getStoredTheme();
-            if (storedTheme) {
-                return storedTheme;
-            }
-            // Fallback to system preference
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        },
-
-        setTheme: theme => {
-            document.documentElement.setAttribute('data-bs-theme', theme);
-            const icon = document.querySelector('#toggleDarkLight i');
-            if (icon) {
-                icon.classList.toggle('fa-sun', theme === 'dark');
-                icon.classList.toggle('fa-moon', theme !== 'dark');
-            }
-        },
-
-        init: () => {
-            themeManager.setTheme(themeManager.getPreferredTheme());
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-                if (!themeManager.getStoredTheme()) {
-                    themeManager.setTheme(themeManager.getPreferredTheme());
-                }
-            });
-        }
-    };
-
-    themeManager.init();
-
-    // Initialize typewriter
-    typewriterEffect();
+/**
+ * Initializes the application functionality after the DOM is fully loaded.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    initializeTooltips();
+    initializeTypewriter();
+    initializeNaughtyBug();
 });
 
-function toggleDarkLight() {
-    const currentTheme = document.documentElement.getAttribute('data-bs-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', newTheme); // Save user preference
-    document.documentElement.setAttribute('data-bs-theme', newTheme);
-
-    const icon = document.querySelector('#toggleDarkLight i');
-    if (icon) {
-        icon.classList.toggle('fa-sun', newTheme === 'dark');
-        icon.classList.toggle('fa-moon', newTheme !== 'dark');
-    }
+/**
+ * Initializes all Bootstrap tooltips on the page.
+ */
+function initializeTooltips() {
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltipTriggerEl => {
+        new bootstrap.Tooltip(tooltipTriggerEl);
+    });
 }
 
 /**
- * JavaScript-based Typewriter Effect
- * This provides a more robust and flexible animation that handles text wrapping correctly.
+ * Sets up and runs the typewriter effect for the designated element.
  */
-function typewriterEffect() {
-    const el = $('#typewriter-text');
-    if (!el.length) return;
+function initializeTypewriter() {
+    const typewriterElement = document.getElementById('typewriter-text');
+    const text = typewriterElement?.getAttribute('data-text');
 
-    const fullText = el.data('text');
-    if (!fullText) return;
-
-    // Tokenize the string to handle HTML tags correctly.
-    // This creates an array of single characters and full HTML tags.
-    const tokens = fullText.match(/<[^>]+>|[^<]/g) || [];
-    
-    let i = 0;
-    const typingSpeed = 60; // ms per character
-    const deletingSpeed = 30; // ms per character
-    const pauseDuration = 2500; // ms to wait before deleting/re-typing
-
-    function type() {
-        if (i < tokens.length) {
-            el.html(tokens.slice(0, i + 1).join(''));
-            i++;
-            setTimeout(type, typingSpeed);
-        } else {
-            setTimeout(deleteText, pauseDuration);
-        }
+    if (!typewriterElement || !text) {
+        return;
     }
 
-    function deleteText() {
-        if (i > 0) {
-            el.html(tokens.slice(0, i - 1).join(''));
-            i--;
-            setTimeout(deleteText, deletingSpeed);
-        } else {
-            setTimeout(type, pauseDuration / 2);
+    // This regex tokenizes the string into an array of HTML tags and individual characters.
+    const tokens = text.match(/<[^>]+>|./g) || [];
+    const typingSpeed = 60;
+    const deletingSpeed = 30;
+    const pauseDuration = 2500;
+
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+    const runTypewriter = async () => {
+        // Infinite loop to keep the effect running
+        while (true) {
+            // Typing phase
+            for (let i = 0; i < tokens.length; i++) {
+                typewriterElement.innerHTML = tokens.slice(0, i + 1).join('');
+                await sleep(typingSpeed);
+            }
+            await sleep(pauseDuration);
+
+            // Deleting phase
+            for (let i = tokens.length; i > 0; i--) {
+                typewriterElement.innerHTML = tokens.slice(0, i - 1).join('');
+                await sleep(deletingSpeed);
+            }
+            await sleep(pauseDuration / 2);
         }
+    };
+
+    runTypewriter();
+}
+
+/**
+ * Initializes the interactive "naughty bug" feature.
+ */
+function initializeNaughtyBug() {
+    const bug = document.getElementById('naughty-bug');
+    const bugIcon = document.getElementById('bug');
+
+    if (!bug || !bugIcon) {
+        return;
     }
 
-    type();
+    let hoverCount = 0;
+    const maxHovers = 3;
+    const animationDuration = 500; // Should match the CSS transition duration
+
+    const moveBug = () => {
+        const vh = window.innerHeight - bug.offsetHeight;
+        const vw = window.innerWidth - bug.offsetWidth;
+
+        const newTop = Math.floor(Math.random() * vh);
+        const newLeft = Math.floor(Math.random() * vw);
+        const rotation = Math.floor(Math.random() * 720) - 360;
+        const scale = 0.8 + Math.random() * 0.7;
+        const hue = Math.floor(Math.random() * 360);
+        const saturation = 70 + Math.floor(Math.random() * 31);
+        const lightness = 50 + Math.floor(Math.random() * 21);
+        const blur = Math.random() * 2;
+        const opacity = 0.7 + Math.random() * 0.3;
+
+        bug.style.top = `${newTop}px`;
+        bug.style.left = `${newLeft}px`;
+        bug.style.transform = `rotate(${rotation}deg) scale(${scale})`;
+        bug.style.filter = `blur(${blur}px)`;
+        bug.style.opacity = opacity;
+        bugIcon.style.color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    };
+
+    const handleBugHover = () => {
+        bug.removeEventListener('mouseover', handleBugHover);
+        hoverCount++;
+
+        if (hoverCount < maxHovers) {
+            moveBug();
+            setTimeout(() => {
+                bug.addEventListener('mouseover', handleBugHover);
+            }, animationDuration);
+        } else {
+            bug.classList.add('bug-poof');
+            setTimeout(() => {
+                const tooltipInstance = bootstrap.Tooltip.getInstance(bugIcon);
+                tooltipInstance?.hide();
+                bug.remove();
+            }, animationDuration);
+        }
+    };
+
+    bug.style.display = 'block';
+    setTimeout(() => {
+        moveBug();
+        bug.addEventListener('mouseover', handleBugHover);
+    }, 10);
+}
+/**
+ * Toggles the website's theme between light and dark modes.
+ * This function is intended to be called from an `onclick` attribute in the HTML.
+ */
+function toggleDarkLight() {
+    const htmlElement = document.documentElement;
+    const toggleButton = document.getElementById('toggleDarkLight');
+
+    if (!toggleButton) {
+        console.error("Theme toggle button with id 'toggleDarkLight' not found.");
+        return;
+    }
+
+    const isDark = htmlElement.getAttribute('data-bs-theme') === 'dark';
+    const newTheme = isDark ? 'light' : 'dark';
+    const newIcon = isDark ? 'fa-moon' : 'fa-sun';
+    const oldIcon = isDark ? 'fa-sun' : 'fa-moon';
+    const newTooltipText = isDark ? 'Dark Mode' : 'Light Mode';
+
+    htmlElement.setAttribute('data-bs-theme', newTheme);
+
+    const buttonIcon = toggleButton.firstElementChild;
+    if (buttonIcon) {
+        buttonIcon.classList.remove(oldIcon);
+        buttonIcon.classList.add(newIcon);
+    }
+
+    const tooltip = bootstrap.Tooltip.getInstance(toggleButton);
+    if (tooltip) {
+        tooltip.setContent({ '.tooltip-inner': newTooltipText });
+    }
 }

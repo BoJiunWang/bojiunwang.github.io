@@ -1,5 +1,5 @@
 /* Globals */
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Noto+Sans+TC:wght@400;500&family=Roboto:ital,wght@0,400;0,500;0,700&family=Dancing+Script:wght@700&display=swap&subset=chinese-traditional');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@1,18..144,600&family=Noto+Sans+TC:wght@400..900&family=Noto+Serif+TC:wght@400..900&family=Roboto:ital,wght@0,400;0,500;0,700&family=Dancing+Script:wght@700&display=swap&subset=chinese-traditional');
 
 :root {
     /* Default (Light Mode) Variables */
@@ -14,7 +14,8 @@
     --footer-text: #BDC3C7; /* Lighter grey for better contrast on dark footer */
     --card-bg: #FFFFFF;
     --card-shadow: rgba(0, 0, 0, 0.05);
-    --bs-border-color-custom: #DCE4E8;
+    --card-shadow-hover: rgba(0, 0, 0, 0.08);
+    --bs-border-color: #DCE4E8;
     --typewriter-bg: #FFFFFF;
     --typewriter-text: #2C3E50;
     --typewriter-accent-grace: #3498DB;
@@ -26,14 +27,17 @@ body {
     font-family: 'Roboto', 'Noto Sans TC', "Helvetica Neue", Helvetica, 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
     font-weight: 400;
     background-color: var(--bs-body-bg);
+    /* 為背景添加非常細微的漸層，增加視覺層次感 */
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.03));
     color: var(--bs-body-color);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    line-height: 1.65; /* 增加行高以提升長文可讀性 */
 }
 
 hr {
-    border-top: 1px solid var(--bs-border-color-custom);
+    border-top: 1px solid var(--bs-border-color);
 }
 
 a {
@@ -138,35 +142,42 @@ a:hover {
 .blog-header {
     padding-bottom: 1.25rem;
     margin-bottom: 2rem;
-    border-bottom: .05rem solid var(--bs-border-color-custom);
+    border-bottom: .05rem solid var(--bs-border-color);
 }
 
 .blog-title {
     margin-bottom: 0;
-    font-size: 1.35rem;
-    font-weight: 500;
+    font-size: 1.5rem; /* 略微增大標題字體 */
+    font-weight: 700; /* 加粗以增加視覺衝擊力 */
     color: var(--bs-body-color);
 }
 
 .blog-description {
     margin-top: .5rem;
     font-size: 1rem;
-    color: #7F8C8D; /* Muted grey */
+    color: #7F8C8D;
 }
 
 /* Blog posts */
 
 .blog-post {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem; /* 增加文章間距 */
     background-color: var(--card-bg);
     padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px var(--card-shadow);
+    border-radius: 12px; /* 更大的圓角，看起來更柔和 */
+    border: 1px solid var(--bs-border-color); /* 添加細微邊框 */
+    box-shadow: 0 2px 8px var(--card-shadow); /* 使用更柔和、層次更豐富的陰影 */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* 為懸浮效果添加平滑過渡 */
+}
+
+.blog-post:hover {
+    transform: translateY(-4px); /* 滑鼠懸浮時卡片輕微上移 */
+    box-shadow: 0 8px 24px var(--card-shadow-hover); /* 懸浮時陰影更明顯，增加立體感 */
 }
 .blog-post-title {
-    margin-bottom: 0.25rem;
-    font-size: 1.3rem;
-    font-weight: 500;
+    margin-bottom: 0.5rem; /* 增加標題下方間距 */
+    font-size: 1.5rem; /* 略微增大字體 */
+    font-weight: 700; /* 加粗以增加視覺衝擊力 */
     color: var(--primary-accent);
 }
 
@@ -180,13 +191,32 @@ a:hover {
     padding-left: 0;
 }
 
-.skill-category {
-    font-weight: 500;
+.skills-interests-grid li {
+    display: inline-block;
+    background-color: var(--bs-body-bg);
     color: var(--bs-body-color);
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.25rem;
-    border-bottom: 2px solid var(--primary-accent);
+    padding: 0.3rem 0.8rem;
+    margin: 0.2rem;
+    border-radius: 15px;
+    font-size: 0.9em;
+    border: 1px solid var(--bs-border-color);
+    transition: all 0.2s ease-in-out;
+}
+
+.skills-interests-grid li:hover {
+    background-color: var(--primary-accent);
+    color: var(--header-text);
+    border-color: var(--primary-accent-hover);
+    transform: translateY(-1px);
+}
+
+.skill-category {
+    font-weight: 700;
+    color: var(--primary-accent);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid var(--primary-accent-hover);
     display: inline-block; /* Make border only as wide as text */
 }
 
@@ -240,11 +270,11 @@ a:hover {
 }
 .thead-custom th {
     color: #FFFFFF;
-    background-color: var(--primary-accent);
+    background-color: var(--primary-accent-hover); /* 使用更深的顏色增加對比 */
     border-color: var(--primary-accent-hover);
 }
 .table-bordered {
-    border-color: var(--bs-border-color-custom);
+    border-color: var(--bs-border-color);
 }
 
 @media (min-width: 40em) {
@@ -277,6 +307,8 @@ a:hover {
     --footer-text: #95A5A6;
     --card-bg: #2C3E50;
     --card-shadow: rgba(0, 0, 0, 0.2);
+    --card-shadow-hover: rgba(0, 0, 0, 0.4);
+    --bs-border-color: #34495E;
     --typewriter-bg: #2C3E50;
     --typewriter-text: #ECF0F1;
     --typewriter-accent-grace: #5DADE2; /* A slightly brighter blue for dark mode */
@@ -286,7 +318,7 @@ a:hover {
 
 [data-bs-theme="dark"] hr,
 [data-bs-theme="dark"] .blog-header {
-    border-color: #4A6572;
+    border-color: var(--bs-border-color);
 }
 
 [data-bs-theme="dark"] .btn-theme-toggle {
@@ -336,7 +368,7 @@ a:hover {
     background: var(--typewriter-bg);
     padding: 1rem 1.5rem;
     border-radius: 6px;
-    font-family: 'EB Garamond', 'Noto Serif TC', serif; /* Changed to a classic serif font */
+    font-family: 'Merriweather', 'Noto Serif TC', serif; /* Changed to a classic serif font */
     font-size: 1.1rem; /* Slightly larger for better readability */
     color: var(--typewriter-text);
     min-height: 4.5em;    /* Set a min-height to prevent vertical jump on line wrap */
@@ -366,12 +398,13 @@ a:hover {
     vertical-align: -0.1em; /* Adjust to align with text baseline */
     margin-left: 0.1em; /* Add a small gap between text and cursor */
 }
+
 .typewriter .accent-grace { color: var(--typewriter-accent-grace); }
 .typewriter .accent-lord { color: var(--typewriter-accent-lord); }
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {
-  from, to { background-color: transparent }
+  from, to { background-color: transparent; }
   50% { background-color: var(--typewriter-cursor-color); }
 }
 
@@ -391,4 +424,80 @@ a:hover {
   75% {
     box-shadow: 0 0 10px 3px rgba(155, 89, 182, 0.7), 0 0 20px 6px rgba(155, 89, 182, 0.5); /* Purple glow */
   }
+}
+
+[data-bs-theme] *,
+[data-bs-theme] *::before,
+[data-bs-theme] *::after {
+    transition: background-color .3s ease-in-out, color .3s ease-in-out, border-color .3s ease-in-out;
+}
+
+/* Fix for typewriter color transition issue */
+/* This is a more forceful rule to ensure no transitions apply to any typewriter elements or their pseudo-elements, overriding the global transition. */
+.typewriter *, .typewriter *::before, .typewriter *::after {
+    transition: none !important;
+}
+
+/*
+ * Fix for table link hover causing layout shift.
+ * Instead of making the font bold, which changes its width,
+ * we simulate the effect with a subtle text-shadow.
+ */
+table td a, table th a {
+    font-weight: normal; /* Ensure base font-weight is not bold */
+}
+
+table td a:hover, table th a:hover {
+    font-weight: normal; /* Override any global bold on hover */
+    text-shadow: 0 0 0.6px currentColor; /* Simulate boldness without changing layout */
+}
+
+/*
+ * Naughty Bug Enhancements - Revised to prevent conflicts
+ */
+
+#naughty-bug {
+    /* Make the bug feel more interactive */
+    cursor: pointer;
+
+    /* Ensure the bug is positioned correctly and on top of other content */
+    position: absolute;
+    z-index: 9999;
+
+    /* Smoothly transition its position and transformation */
+    transition: top 0.4s ease-in-out, left 0.4s ease-in-out, transform 0.3s ease-in-out;
+
+    /* Add a subtle animation to make it feel "alive" */
+    animation: naughty-bug-rotate 5s ease-in-out infinite;
+}
+
+#naughty-bug:hover {
+    /* A simple rotation on hover to avoid overriding JS positioning. */
+    transform: rotate(20deg);
+}
+
+/* Keyframe animation for the bug's idle state - simplified to rotation only */
+@keyframes naughty-bug-rotate {
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(-8deg); }
+    40% { transform: rotate(8deg); }
+    60% { transform: rotate(-4deg); }
+    80% { transform: rotate(4deg); }
+}
+
+/* Naughty Bug poof effect on 3rd hover */
+.bug-poof {
+    /* The animation will override the existing transition */
+    animation: bug-poof-animation 0.5s ease-in-out forwards;
+}
+
+@keyframes bug-poof-animation {
+    from {
+        transform: scale(1.2) rotate(20deg);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+    }
 }

@@ -1,47 +1,64 @@
 /* Globals */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Roboto:ital,wght@0,400;0,500;0,700&family=Dancing+Script:wght@700&display=swap&subset=chinese-traditional');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Noto+Sans+TC:wght@400;500&family=Roboto:ital,wght@0,400;0,500;0,700&family=Dancing+Script:wght@700&display=swap&subset=chinese-traditional');
+
+:root {
+    /* Default (Light Mode) Variables */
+    --primary-accent: #1ABC9C;
+    --primary-accent-hover: #16A085;
+    --secondary-accent: #F39C12;
+    --bs-body-bg: #EAECEE;
+    --bs-body-color: #34495E;
+    --header-bg: #2C3E50;
+    --header-text: #ECF0F1;
+    --footer-bg: var(--header-bg);
+    --footer-text: #BDC3C7; /* Lighter grey for better contrast on dark footer */
+    --card-bg: #FFFFFF;
+    --card-shadow: rgba(0, 0, 0, 0.05);
+    --bs-border-color-custom: #DCE4E8;
+    --typewriter-bg: #FFFFFF;
+    --typewriter-text: #2C3E50;
+    --typewriter-accent-grace: #3498DB;
+    --typewriter-accent-lord: #D4AF37;
+    --typewriter-cursor-color: var(--primary-accent);
+}
+
 body {
     font-family: 'Roboto', 'Noto Sans TC', "Helvetica Neue", Helvetica, 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
     font-weight: 400;
-    background: #F5F5F5;
-    color: #212121;
-}
-
-.tooltip {
-    font-family: 'Roboto', 'Noto Sans TC', "Helvetica Neue", Helvetica, 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
-    font-weight: 400;
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 hr {
-    border-top: 1px solid #BDBDBD;
+    border-top: 1px solid var(--bs-border-color-custom);
 }
 
 a {
     font-weight: 400;
-    color: #448AFF;
+    color: var(--primary-accent);
     text-decoration: none;
+    transition: color 0.2s ease-in-out;
 }
 
 a:hover {
     font-weight: 500;
-    color: #388E3C;
+    color: var(--primary-accent-hover);
     text-decoration: underline;
 }
 
+/* For quote in header */
+.dancing-script {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
 /* Override Bootstrap's default container. */
 
 .container {
     max-width: 60rem;
-}
-
-.pull-right {
-    float: right !important;
-}
-
-.text-info {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #33691E !important;
 }
 
 .tooltip {
@@ -55,11 +72,8 @@ a:hover {
 /* Masthead for nav */
 
 .blog-masthead {
-    margin-bottom: 3rem;
-    background-color: #0277BD;
-    -webkit-box-shadow: inset 0 -.1rem .25rem rgba(0, 0, 0, .1);
-    box-shadow: inset 0 -.1rem .25rem rgba(0, 0, 0, .1);
-    width: 100%;
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* Nav links */
@@ -68,19 +82,21 @@ a:hover {
     position: relative;
     padding: 1rem;
     font-weight: 500;
-    color: #CDDDEB;
+    color: #BDC3C7; /* A lighter grey for contrast on navy */
     font-size: 1.2rem;
+    transition: color 0.2s ease-in-out;
 }
 
 .nav-link:hover,
 .nav-link:focus {
-    color: #F5F5F5;
+    color: var(--header-text);
     background-color: transparent;
+    text-decoration: none;
 }
 
 /* Active state gets a caret at the bottom */
 .nav-link.active {
-    color: #F5F5F5;
+    color: var(--header-text);
 }
 
 .nav-link.active:after {
@@ -89,12 +105,32 @@ a:hover {
     left: 50%;
     width: 0;
     height: 0;
-    margin-left: -.3rem;
+    margin-left: -.5rem;
     vertical-align: middle;
     content: "";
-    border-right: .3rem solid transparent;
-    border-bottom: .3rem solid;
-    border-left: .3rem solid transparent;
+    border-right: .5rem solid transparent;
+    border-bottom: .5rem solid var(--bs-body-bg);
+    border-left: .5rem solid transparent;
+}
+
+/* Dark/Light mode toggle icon */
+.btn-theme-toggle {
+    /* Reset button defaults to look like a link */
+    background-color: transparent;
+    border: none;
+    padding: 1rem; /* Match nav-link */
+    line-height: 1; /* Align icon better */
+
+    /* Copied from original #toggleDarkLight */
+    color: #BDC3C7; /* Match nav-link color for consistency */
+    font-size: 1.2rem;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-theme-toggle:hover, .btn-theme-toggle:focus {
+    color: var(--header-text); /* Match nav-link hover */
+    transform: scale(1.1);
+    box-shadow: none; /* Override Bootstrap's default focus shadow */
 }
 
 /* Blog header and description */
@@ -102,69 +138,113 @@ a:hover {
 .blog-header {
     padding-bottom: 1.25rem;
     margin-bottom: 2rem;
-    border-bottom: .05rem solid #BDBDBD;
+    border-bottom: .05rem solid var(--bs-border-color-custom);
 }
 
 .blog-title {
     margin-bottom: 0;
     font-size: 1.35rem;
     font-weight: 500;
-    color: #000000;
+    color: var(--bs-body-color);
 }
 
 .blog-description {
     margin-top: .5rem;
     font-size: 1rem;
-    color: #607D8B;
+    color: #7F8C8D; /* Muted grey */
 }
 
 /* Blog posts */
 
 .blog-post {
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--card-shadow);
+}
+.blog-post-title {
+    margin-bottom: 0.25rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--primary-accent);
 }
 
-.blog-post-title {
-    margin-bottom: .25rem;
-    font-size: 1.3rem;
+/* New styles for Skills & Interests section */
+.skills-interests-grid ul {
+    padding-left: 1.2rem; /* Indent list items */
+    margin-bottom: 1.5rem;
+}
+
+.skills-interests-grid .list-unstyled {
+    padding-left: 0;
+}
+
+.skill-category {
+    font-weight: 500;
+    color: var(--bs-body-color);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid var(--primary-accent);
+    display: inline-block; /* Make border only as wide as text */
+}
+
+.interest-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.interest-item i {
+    color: var(--bs-secondary-color);
+    /* margin-right is now handled by Bootstrap's 'me-2' class in HTML */
+    width: 1.2em; /* Ensure consistent icon alignment */
+    text-align: center;
 }
 
 /* Footer */
-
 .blog-footer {
-    padding: .2rem 0;
+    padding: 1rem 0;
     font-size: 0.9rem;
     text-align: center;
-    background-color: #C2C2C2;
-    color: #707070;
-    border-top: .05rem solid #707070;
+    background-color: var(--header-bg);
+    color: var(--footer-text); /* Use a variable for consistent footer text color */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease-in-out;
 }
 
-.blog-footer p:last-child {
-    margin-bottom: 0;
-}
- 
-/* Table */
-
-.table th,
-.table td {
-    padding: 0.5rem;
-    vertical-align: middle;
+.blog-footer p {
+    margin: 0; /* Color is inherited from .blog-footer */
 }
 
-.thead-custom,
-.thead-custom > th {
-    color: #1B1924;
-    background-color: #B5C1B4;
+.social-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1); /* This works well on the dark footer background */
+    color: var(--footer-text);
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.thead-custom:hover {
-    color: #B5C1B4;
-    background-color: #74593D;
+.social-links a:hover {
+    background-color: var(--primary-accent);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    text-decoration: none;
 }
-
-.table tbody {
-    color: #1B1924;
+.thead-custom th {
+    color: #FFFFFF;
+    background-color: var(--primary-accent);
+    border-color: var(--primary-accent-hover);
+}
+.table-bordered {
+    border-color: var(--bs-border-color-custom);
 }
 
 @media (min-width: 40em) {
@@ -172,80 +252,60 @@ a:hover {
         font-size: 1.25em;
     }
 
-    .blog-title {
-        font-size: 2.2rem;
+    .blog-title { font-size: 2.2rem; }
+
+    .blog-post {
+        padding: 2rem;
     }
 }
 
-body.dark-mode {
-    color: #BDBDBD;
-    background-color: #000000;
+/*
+ * Dark Mode - Using Bootstrap 5 Native Theme Switching
+ * https://getbootstrap.com/docs/5.3/customize/color-modes/
+ */
+
+[data-bs-theme="dark"] {
+    /* Techy & Lively Palette - Dark Mode */
+    --primary-accent: #1ABC9C;
+    --primary-accent-hover: #2ECC71; /* A brighter green for hover */
+    --secondary-accent: #F1C40F;    /* A brighter yellow */
+    --bs-body-bg: #1A252F;          /* A darker, tech-inspired navy for more contrast */
+    --bs-body-color: #ECF0F1;       /* Soft off-white */
+    --header-bg: #2C3E50;           /* Deep, desaturated navy */
+    --header-text: #ECF0F1;
+    --footer-bg: #2C3E50;
+    --footer-text: #95A5A6;
+    --card-bg: #2C3E50;
+    --card-shadow: rgba(0, 0, 0, 0.2);
+    --typewriter-bg: #2C3E50;
+    --typewriter-text: #ECF0F1;
+    --typewriter-accent-grace: #5DADE2; /* A slightly brighter blue for dark mode */
+    --typewriter-accent-lord: #F9E79F;  /* A pale, ethereal gold */
+    --typewriter-cursor-color: var(--primary-accent);
 }
 
-body.dark-mode .blog-masthead {
-   background-color: #01579B;
+[data-bs-theme="dark"] hr,
+[data-bs-theme="dark"] .blog-header {
+    border-color: #4A6572;
 }
 
-body.dark-mode .blog-title {
-    color: #FAFAFA;   
+[data-bs-theme="dark"] .btn-theme-toggle {
+    color: var(--secondary-accent);
 }
 
-body.dark-mode .nav-link.active {
-    color: #000000;
+[data-bs-theme="dark"] .btn-theme-toggle:hover,
+[data-bs-theme="dark"] .btn-theme-toggle:focus {
+    color: #F39C12; /* A slightly darker amber for dark mode hover */
 }
 
-body.dark-mode .table tbody {
-    color: #BDBDBD;
+[data-bs-theme="dark"] .interest-item i {
+    color: var(--bs-secondary-color);
 }
 
-body.dark-mode .thead-custom,
-.thead-custom > th {
-    color: #1B1924;
-    background-color: #758174;
-}
-
-body.dark-mode .gray-out {
-    color: #1D1D1D;
-}
-
-body.dark-mode .blog-footer {
-    background-color: #323232;
-    color: #A0A0A0;
-}
-
-body.dark-mode .bs-tooltip-bottom .tooltip-arrow::before{
-    border-bottom-color: #CFD8DC;
-}
-
-body.dark-mode .bs-tooltip-top .tooltip-arrow::before{
-    border-top-color: #CFD8DC;
-}
-
-body.dark-mode .bs-tooltip-left .tooltip-arrow::before{
-    border-left-color: #CFD8DC;
-}
-
-body.dark-mode .bs-tooltip-right .tooltip-arrow::before{
-    border-right-color: #CFD8DC;
-}
-
-body.dark-mode .bs-tooltip-start .tooltip-arrow::before{
-    border-left-color: #CFD8DC;
-}
-
-body.dark-mode .bs-tooltip-end .tooltip-arrow::before{
-    border-right-color: #CFD8DC;
-}
-
-body.dark-mode .tooltip-inner{
-    background-color: #CFD8DC;
-    color: #000000;
-}
-
-body.dark-mode .text-info {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #8BC34A !important;
+[data-bs-theme="dark"] .thead-custom th {
+    background-color: var(--primary-accent-hover);
+    color: var(--bs-body-bg);
+    border-color: var(--primary-accent);
 }
 
 .runScale {
@@ -267,28 +327,68 @@ body.dark-mode .text-info {
     }
 }
 
+/*
+ * Typewriter Effect Redesign
+ */
+
 .typewriter {
-    overflow: hidden;                   /* Ensures the content is not revealed until the animation */
-    border-right: .1em solid orange;    /* The typwriter cursor */
-    white-space: nowrap;                /* Keeps the content on a single line */
-    margin: 0 auto;                     /* Gives that scrolling effect as the typing happens */
-    animation: 
-      typing 5s steps(40, end) infinite,
-      blink-caret 0.75s step-end infinite;
-}
-  
-  /* The typing effect */
-@keyframes typing {
-    from {width: 0%}
-    to {width: 87%;}
-    0% {  width: 0% }
-    75% {  width: 87% }
-}
-  
-  /* The typewriter cursor effect */
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: orange; }
+    /* Reverting to a standard block container to stabilize text flow */
+    background: var(--typewriter-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    font-family: 'EB Garamond', 'Noto Serif TC', serif; /* Changed to a classic serif font */
+    font-size: 1.1rem; /* Slightly larger for better readability */
+    color: var(--typewriter-text);
+    min-height: 4.5em;    /* Set a min-height to prevent vertical jump on line wrap */
+    animation: rgb-glow-animation 8s ease-in-out infinite;
 }
 
-/* This site color design refer to Google Material Design and "https://www.bfa.com.tw/blog/2016/50-color-combinations" */
+.typewriter-container {
+    /* Add some space to prevent the glowing box-shadow from overlapping with the footer */
+    margin-bottom: 2rem; 
+}
+
+.typewriter .fa-bullhorn {
+    margin-right: 0.75rem;
+    color: var(--primary-accent);
+}
+
+.typewriter #typewriter-text {
+    white-space: normal; /* Allow text to wrap */
+}
+
+.typewriter .typewriter-cursor {
+    display: inline-block;
+    width: .1em;
+    height: 1em;
+    background-color: var(--typewriter-cursor-color);
+    animation: blink-caret 0.75s step-end infinite;
+    vertical-align: -0.1em; /* Adjust to align with text baseline */
+    margin-left: 0.1em; /* Add a small gap between text and cursor */
+}
+.typewriter .accent-grace { color: var(--typewriter-accent-grace); }
+.typewriter .accent-lord { color: var(--typewriter-accent-lord); }
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { background-color: transparent }
+  50% { background-color: var(--typewriter-cursor-color); }
+}
+
+/*
+ * RGB Glow Animation for Typewriter
+ */
+@keyframes rgb-glow-animation {
+  0%, 100% {
+    box-shadow: 0 0 7px 1px rgba(243, 156, 18, 0.6), 0 0 14px 2px rgba(243, 156, 18, 0.4); /* Amber glow */
+  }
+  25% {
+    box-shadow: 0 0 10px 3px rgba(26, 188, 156, 0.7), 0 0 20px 6px rgba(26, 188, 156, 0.5); /* Teal glow */
+  }
+  50% {
+    box-shadow: 0 0 7px 1px rgba(52, 152, 219, 0.6), 0 0 14px 2px rgba(52, 152, 219, 0.4); /* Blue glow */
+  }
+  75% {
+    box-shadow: 0 0 10px 3px rgba(155, 89, 182, 0.7), 0 0 20px 6px rgba(155, 89, 182, 0.5); /* Purple glow */
+  }
+}

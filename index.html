@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="zh-Hant-TW" data-bs-theme="light">
 <!-- 
         if(!pain){
             gain = undefined;
@@ -23,45 +23,39 @@
     <script src="./js/fontawesome.min.js"></script>
 </head>
 
-<body>
-
-    <div class="blog-masthead">
+<body id="top">
+    <header class="blog-masthead mb-5">
         <div class="container">
-            <nav class="nav navbar-expand">
+            <nav class="nav navbar-expand align-items-center">
                 <a class="nav-link active" href="#">Introduction</a>
-                <div class="navbar-collapse">
-                    <ul class="navbar-nav me-auto">
-                    </ul>
-                    <span id="toggleDarkLight" onclick="toggleDarkLight()" data-toggle="tooltip" data-placement="bottom"
-                        title="Dark/Light mode"><i class="fas fa-moon"></i></span>
-                </div>
+                <button type="button" id="toggleDarkLight" onclick="toggleDarkLight()" class="btn btn-theme-toggle ms-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Dark/Light mode">
+                    <i class="fas fa-moon"></i>
+                </button>
             </nav>
         </div>
-    </div>
+    </header>
 
     <div class="blog-header">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-4 col-md-4 col-sm-6">
-                    <img src="./images/photo.jpg" class="img-thumbnail rounded-circle" width="160" height="200">
+                    <img src="./images/photo.jpg" class="img-thumbnail rounded-circle" width="160" height="200" alt="Bo Jiun Wang's photo" loading="lazy">
                 </div>
                 <div class="col-8 col-md-8 col-sm-8 mx-auto">
                     <h1 class="blog-title">王博駿 Bo Jiun Wang
                         <br>
                         (Ivan Wang)
                     </h1>
-                    <div class="clearfix"></div>
                     <p class="lead blog-description">
-                        <span style="font-family: 'Dancing Script';font-weight: 700;font-size: 1.2rem;">
-                            Everyone is a <i class="fas fa-star" style="color: #66BB6A"></i> and deserves the right to
+                        <span class="dancing-script">
+                            Everyone is a <i class="fas fa-star" style="color: #FF8F00;" aria-hidden="true"></i> and deserves the right to
                             twinkle.
                             <br>
                             - Marilyn Monroe
                         </span>
                     </p>
-                    <div class="clearfix"></div>
                     <p class="lead blog-description">
-                        <i class="fas fa-link"></i>
+                        <i class="fas fa-link" aria-hidden="true"></i>
                         <a href="https://www.cakeresume.com/bo-jiun-wang" target="_blank">CakeResume</a>
                     </p>
                 </div>
@@ -73,10 +67,10 @@
         <div class="row">
             <div class="col">
                 <div class="blog-post">
-                    <h2 class="blog-post-title text-info"><span class="fas fa-briefcase"></span>&nbsp;Experience</h2>
-                    <hr>
+                    <h2 class="blog-post-title"><i class="fas fa-briefcase me-2" aria-hidden="true"></i>Experience</h2>
+                    <hr class="my-3">
                     <div class="table-responsive-lg">
-                        <table class="table text-center">
+                        <table class="table text-center table-bordered">
                             <thead class="thead-custom">
                                 <tr>
                                     <th>Company</th>
@@ -86,19 +80,11 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td rowspan="4">
-                                        <a href="https://www.gamesofa.com" target="_blank"
-                                            style="white-space:nowrap;">GAMESOFa Inc.<br>慧邦科技股份有限公司</a>
-                                        <span id="gamesofaLogo" class="fa-layers fa-xs" style="opacity: 0.35;"
-                                            onmouseover="cancelOpacityAndRunScale(this)">
-                                            <i class="fas fa-heart" data-fa-transform="rotate--330"
-                                                style="color:#EF8018"></i>
-                                            <i class="fas fa-heart" data-fa-transform="rotate--30 shrink-8 up-6 right-8"
-                                                style="color:#359AD6"></i>
-                                        </span>
+                                    <td rowspan="4" class="align-middle">
+                                        <a href="https://www.gamesofa.com" target="_blank" class="text-nowrap">GAMESOFa Inc.<br>慧邦科技股份有限公司</a>
                                     </td>
-                                    <td>Senior Engineering Project Team Leader</td>
-                                    <td>2024/05 -&nbsp;&nbsp;
+                                    <td class="align-middle">Senior Engineering Project Team Leader</td>
+                                    <td class="align-middle">2024/05 -&nbsp;&nbsp;
                                         <span class="fa-layers fa-fw fa-bounce" style="--fa-animation-duration: 2s;">
                                             <i class="fas fa-certificate" data-fa-transform="grow-16"
                                                 style="color: #FFD600"></i>
@@ -109,51 +95,49 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Engineering Project Team Leader</td>
-                                    <td>2022/05 - 2024/05</td>
+                                    <td class="align-middle">Engineering Project Team Leader</td>
+                                    <td class="align-middle">2022/05 - 2024/05</td>
                                 </tr>
                                 <tr>
-                                    <td>Deputy Engineering Project Team Leader</td>
-                                    <td>2021/11 - 2022/05</td>
+                                    <td class="align-middle">Deputy Engineering Project Team Leader</td>
+                                    <td class="align-middle">2021/11 - 2022/05</td>
                                 </tr>
                                 <tr>
-                                    <td>Software Engineer</td>
-                                    <td>2019/04 - 2021/11</td>
+                                    <td class="align-middle">Software Engineer</td>
+                                    <td class="align-middle">2019/04 - 2021/11</td>
                                 </tr>
                                 <tr>
-                                    <td><a href="https://www.quantatw.com" target="_blank" 
-                                        style="white-space:nowrap;">Quanta Computer Inc.<br>廣達電腦股份有限公司</span></a></td>
-                                    <td>Software Engineer</td>
-                                    <td>2018/12 - 2019/02</td>
+                                    <td class="align-middle"><a href="https://www.quantatw.com" target="_blank" class="text-nowrap">Quanta Computer Inc.<br>廣達電腦股份有限公司</a></td>
+                                    <td class="align-middle">Software Engineer</td>
+                                    <td class="align-middle">2018/12 - 2019/02</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">Military Service</td>
-                                    <td>2018/08 - 2018/12</td>
+                                    <td colspan="2" class="align-middle">Military Service</td>
+                                    <td class="align-middle">2018/08 - 2018/12</td>
                                 </tr>
                                 <tr>
-                                    <td rowspan="2"><a href="https://www.cyberlink.com" target="_blank"
-                                            style="white-space:nowrap;">CyberLink Corp.<br>訊連科技股份有限公司</a></td>
-                                    <td>Software Quality Assurance Engineer<br>(Part-time)</td>
-                                    <td>2015/12 - 2018/08</td>
+                                    <td rowspan="2" class="align-middle"><a href="https://www.cyberlink.com" target="_blank" class="text-nowrap">CyberLink Corp.<br>訊連科技股份有限公司</a></td>
+                                    <td class="align-middle">Software Quality Assurance Engineer<br>(Part-time)</td>
+                                    <td class="align-middle">2015/12 - 2018/08</td>
                                 </tr>
                                 <tr>
-                                    <td>Software Quality Assurance Intern<br>(Summer Internship Program)</td>
-                                    <td>2014/06 - 2014/09</td>
+                                    <td class="align-middle">Software Quality Assurance Intern<br>(Summer Internship Program)</td>
+                                    <td class="align-middle">2014/06 - 2014/09</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="pull-right">
-                        <a href="#"><span class="fas fa-arrow-circle-up"></span></a>
+                    <div class="float-end">
+                        <a href="#top"><i class="fas fa-arrow-circle-up"></i></a>
                     </div>
                 </div>
                 
                 <div class="blog-post">
-                    <h2 class="blog-post-title text-info"><span class="fas fa-user-graduate"></span>&nbsp;Education</h2>
-                    <hr>
+                    <h2 class="blog-post-title"><i class="fas fa-user-graduate me-2" aria-hidden="true"></i>Education</h2>
+                    <hr class="my-3">
                     <div class="table-responsive-lg">
-                        <table class="table text-center">
+                        <table class="table text-center table-bordered">
                             <thead class="thead-custom">
                                 <tr>
                                     <th>School</th>
@@ -164,94 +148,105 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td rowspan="2"><a href="https://www.ntut.edu.tw" target="_blank"
-                                            style="white-space:nowrap;">National Taipei University of
+                                    <td rowspan="2" class="align-middle"><a href="https://www.ntut.edu.tw" target="_blank" class="text-nowrap">National Taipei University of
                                             Technology<br>國立臺北科技大學(Taipei Tech)</a></td>
-                                    <td rowspan="2">Computer Science &amp; Information Engineering</td>
-                                    <td>Master<br><a href="https://hdl.handle.net/11296/s26jqt" target="_blank"><span
-                                                id="thesis" class="fa-stack" data-toggle="tooltip" data-placement="top"
-                                                title="Thesis: Distributed Computing Techniques for Intelligent System | 應用分散式計算於智慧系統之研究"><i
-                                                    class="fas fa-book"></i></span></a></td>
-                                    <td>2016/09 - 2018/06</td>
+                                    <td rowspan="2" class="align-middle">Computer Science &amp; Information Engineering</td>
+                                    <td class="align-middle">Master<br><a href="https://hdl.handle.net/11296/s26jqt" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top" title="Thesis: Distributed Computing Techniques for Intelligent System"><i
+                                                class="fas fa-book" aria-hidden="true"></i></a></td>
+                                    <td class="align-middle">2016/09 - 2018/06</td>
                                 </tr>
                                 <tr>
-                                    <td>Bachelor</td>
-                                    <td>2012/09 - 2016/06</td>
+                                    <td class="align-middle">Bachelor</td>
+                                    <td class="align-middle">2012/09 - 2016/06</td>
                                 </tr>
                                 <tr>
-                                    <td><a href="http://www.saihs.edu.tw/" target="_blank"
-                                            style="white-space:nowrap;">Taipei Municipal Songshan High School of Agriculture
+                                    <td class="align-middle"><a href="http://www.saihs.edu.tw/" target="_blank" class="text-nowrap">Taipei Municipal Songshan High School of Agriculture
                                             and Industry<br>臺北市立松山高級工農職業學校</a></td>
-                                    <td>Computer Technology</td>
-                                    <td>Diploma</td>
-                                    <td>2009/09 - 2012/06</td>
+                                    <td class="align-middle">Computer Technology</td>
+                                    <td class="align-middle">Diploma</td>
+                                    <td class="align-middle">2009/09 - 2012/06</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="pull-right">
-                        <a href="#"><span class="fas fa-arrow-circle-up"></span></a>
+                    <div class="float-end">
+                        <a href="#top"><i class="fas fa-arrow-circle-up"></i></a>
                     </div>
                 </div>
                 
                 <div class="blog-post">
-                    <h2 class="blog-post-title text-info"><span class="far fa-list-alt"></span>&nbsp;Skills &amp;
-                        Interests</h2>
-                    <hr>
-                    <h5>Languages:</h5>
-                    <ul>
-                        <li>Mandarin, English</li>
-                    </ul>
-                    <h5>Programming Skills:</h5>
-                    <ul>
-                        <li>C, C++, C#</li>
-                        <li>JavaScript</li>
-                        <li>Java, Java Web</li>
-                        <li>SQL</li>
-                        <li>Python</li>
-                    </ul>
-                    <h5>Interests:</h5>
-                    <ul>
-                        <li><i class="fas fa-dumbbell" style="color: #FFB300"></i> Workout</li>
-                        <li><i class="fas fa-running" style="color: #FFB300"></i> Running</li>
-                        <li><i class="fas fa-film" style="color: #FFB300"></i> Watching movies</li>
-                    </ul>
+                    <h2 class="blog-post-title"><i class="far fa-list-alt me-2" aria-hidden="true"></i>Skills &amp; Interests</h2>
+                    <hr class="my-3">
+                    <div class="row skills-interests-grid">
+                        <div class="col-lg-7">
+                            <h5 class="skill-category">Technical Skills</h5>
+                            <ul>
+                                <li><strong>Programming Languages:</strong> JavaScript, Java, C++, Python</li>
+                                <li><strong>Frameworks:</strong> cocos2d-x, Node.js</li>
+                            </ul>
+                            <h5 class="skill-category">Leadership & Management</h5>
+                            <ul>
+                                <li>Project Management</li>
+                                <li>Cross-Departmental Communication</li>
+                                <li>Team Leading</li>
+                                <li>Mentoring</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-5">
+                            <h5 class="skill-category">Languages</h5>
+                            <ul>
+                                <li>Mandarin (Native)</li>
+                                <li>English (Intermediate)</li>
+                            </ul>
+                            <h5 class="skill-category">Interests</h5>
+                            <ul class="list-unstyled">
+                                <li class="interest-item"><i class="fas fa-rocket me-2" aria-hidden="true"></i><span>Exploring New Tech</span></li>
+                                <li class="interest-item"><i class="fas fa-book-reader me-2" aria-hidden="true"></i><span>Reading Tech Articles</span></li>
+                                <li class="interest-item"><i class="fas fa-film me-2" aria-hidden="true"></i><span>Movies</span></li>
+                            </ul>
+                        </div>
+                    </div>
 
-                    <div class="pull-right">
-                        <a href="#"><span class="fas fa-arrow-circle-up"></span></a>
+                    <div class="float-end">
+                        <a href="#top"><i class="fas fa-arrow-circle-up"></i></a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="d-none d-xl-block typewriter">
-            <i class="fas fa-bullhorn"></i>
-            <span>May the <span style="color: #0091EA">grace</span> of the <span style="color: #FFD600">Lord Jesus Christ</span>, and the <span style="color: #0091EA">love</span> of <span style="color: #FFD600">God</span>, and the <span style="color: #0091EA">fellowship</span> of the <span style="color: #FFD600">Holy Spirit</span> be with you all.</span>
+        <div class="d-none d-xl-block typewriter-container">
+            <div class="typewriter">
+                <i class="fas fa-bullhorn" aria-hidden="true"></i>
+                <span id="typewriter-text" data-text="May the <span class='accent-grace'>grace</span> of the <span class='accent-lord'>Lord Jesus Christ</span>, and the <span class='accent-grace'>love</span> of <span class='accent-lord'>God</span>, and the <span class='accent-grace'>fellowship</span> of the <span class='accent-lord'>Holy Spirit</span> be with you all."></span><span class="typewriter-cursor" aria-hidden="true"></span>
+            </div>
         </div>
     </div>
 
-    <footer class="blog-footer">
-        <!-- Logo color code refer to https://brandpalettes.com/ -->
-        <span class="fa-layers fa-fw"><span class="fa-inverse fas fa-circle"></span><span class="fas fab fa-google"
-                data-fa-transform="shrink-1" style="color: #4285F4"></span></span>&nbsp;<a
-            href="mailto:bobo8347@gmail.com" target="_blank">Gmail</a>&nbsp;|&nbsp;
-        <span class="fa-layers fa-fw"><span class="fa-inverse fas fa-circle"></span><span class="fab fa-facebook"
-                style="color: #1877f2"></span></span>&nbsp;<a href="https://www.facebook.com/WangBoJiun"
-            target="_blank">Facebook</a>&nbsp;|&nbsp;
-        <span class="fa-layers fa-fw"><span class="fa-inverse fas fa-square"></span><span class="fab fa-linkedin"
-                style="color: #0077B5"></span></span>&nbsp;<a href="https://www.linkedin.com/in/bo-jiun-wang/"
-            target="_blank">Linkedin</a>&nbsp;|&nbsp;
-        <span class="fa-layers fa-fw"><span class="fas fa-circle" style="color:#24292e"></span><span
-                class="fa-inverse fab fa-github"></span></span>&nbsp;<a href="https://github.com/BoJiunWang/"
-            target="_blank">GitHub</a>
+    <footer class="blog-footer mt-auto">
+        <div class="container d-flex flex-column flex-sm-row justify-content-center align-items-center">
+            <div class="social-links d-flex align-items-center gap-3">
+                <a href="mailto:bobo8347@gmail.com" target="_blank" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Email">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.facebook.com/WangBoJiun" target="_blank" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/bo-jiun-wang/" target="_blank" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="LinkedIn">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/BoJiunWang/" target="_blank" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
     </footer>
 
     <div id="naughty-bug" style="display:none">
-        <span id="bug" class="fa-stack fa-spin" data-toggle="tooltip" data-placement="right" title="Yes, I'm a bug..."
+        <span id="bug" class="fa-stack fa-spin" data-bs-toggle="tooltip" data-bs-placement="right" title="Yes, I'm a bug..."
             style="color: #F44336;font-size: 0.6rem;vertical-align: bottom">
-            <i class="far fa-circle fa-stack-2x"></i>
-            <i class="fas fa-bug fa-stack-1x"></i>
+            <i class="far fa-circle fa-stack-2x" aria-hidden="true"></i>
+            <i class="fas fa-bug fa-stack-1x" aria-hidden="true"></i>
         </span>
     </div>
 
@@ -264,9 +259,8 @@
         
         gtag('config', 'G-84CHB9CYR3');
     </script>
-    <script src="./js/jquery-3.6.0.min.js"></script>
-    <script src="./js/popper.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/main.js"></script>
 </body>
 

@@ -1,7 +1,7 @@
 $(function () {
-    $('[data-toggle="tooltip"]').each(function () {
-        $(this).tooltip();
-    });
+    // Initialize Bootstrap 5 tooltips
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
     var divSize = ((Math.random() * 100) + 50).toFixed();
     var posX = (Math.random() * ($(document).width() - divSize)).toFixed();
@@ -25,46 +25,99 @@ $(function () {
         $(this).remove();
     });
 
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches)
-        $("body").addClass("dark-mode");
-    
-    // Best Wishes for YOU
-    let WHITE = "color:#FFFFFF";
-    let YELLOW = "color:#FFD600";
-    let BLUE = "color:#0091EA";
-    console.log("%c---\nMay the " + "%cgrace" + "%c of the " + "%cLord Jesus Christ" + "%c, and the " + "%clove" + "%c of " + "%cGod" + "%c,\nand the " + "%cfellowship" + "%c of the " + "%cHoly Spirit" + "%c be with you all.\n" + "%c(2 Corinthians 13:14, New International Version)" + "%c\n---", WHITE, BLUE, WHITE, YELLOW, WHITE, BLUE, WHITE, YELLOW, WHITE, BLUE, WHITE, YELLOW, WHITE, "font-style:italic", "font-style: normal");    
+    /**
+     * Bootstrap 5 Native Dark Mode Toggler
+     */
+    const themeManager = {
+        getStoredTheme: () => localStorage.getItem('theme'),
+        setStoredTheme: theme => localStorage.setItem('theme', theme),
+
+        getPreferredTheme: () => {
+            const storedTheme = themeManager.getStoredTheme();
+            if (storedTheme) {
+                return storedTheme;
+            }
+            // Fallback to system preference
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        },
+
+        setTheme: theme => {
+            document.documentElement.setAttribute('data-bs-theme', theme);
+            const icon = document.querySelector('#toggleDarkLight i');
+            if (icon) {
+                icon.classList.toggle('fa-sun', theme === 'dark');
+                icon.classList.toggle('fa-moon', theme !== 'dark');
+            }
+        },
+
+        init: () => {
+            themeManager.setTheme(themeManager.getPreferredTheme());
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                if (!themeManager.getStoredTheme()) {
+                    themeManager.setTheme(themeManager.getPreferredTheme());
+                }
+            });
+        }
+    };
+
+    themeManager.init();
+
+    // Initialize typewriter
+    typewriterEffect();
 });
 
 function toggleDarkLight() {
-    $("body").toggleClass("dark-mode");
+    const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', newTheme); // Save user preference
+    document.documentElement.setAttribute('data-bs-theme', newTheme);
+
+    const icon = document.querySelector('#toggleDarkLight i');
+    if (icon) {
+        icon.classList.toggle('fa-sun', newTheme === 'dark');
+        icon.classList.toggle('fa-moon', newTheme !== 'dark');
+    }
 }
 
-function cancelOpacityAndRunScale(element) {
-    // Find Old element and remove it
-    var logoStr = document.getElementById("logoStr");
-    logoStr && element.removeChild(logoStr);
+/**
+ * JavaScript-based Typewriter Effect
+ * This provides a more robust and flexible animation that handles text wrapping correctly.
+ */
+function typewriterEffect() {
+    const el = $('#typewriter-text');
+    if (!el.length) return;
 
-    // Create New Logo String
-    var logoStrDiv = document.createElement('div');
-    logoStrDiv.setAttribute("id", "logoStr");
-    logoStrDiv.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#359AD6;font-weight:700">GAME</span><span style="color:#EF8018;font-weight:700">SOFa</span>';
-    element.appendChild(logoStrDiv);
+    const fullText = el.data('text');
+    if (!fullText) return;
 
-    // Update Logo Opacity
-    element.style.opacity = 1;
-    // Add runScale css
-    $(element).addClass('runScale');
+    // Tokenize the string to handle HTML tags correctly.
+    // This creates an array of single characters and full HTML tags.
+    const tokens = fullText.match(/<[^>]+>|[^<]/g) || [];
+    
+    let i = 0;
+    const typingSpeed = 60; // ms per character
+    const deletingSpeed = 30; // ms per character
+    const pauseDuration = 2500; // ms to wait before deleting/re-typing
 
-    // Animation End Callback
-    element.addEventListener('animationend', function () {
-        // Reset Opacity
-        element.style.opacity = 0.25;
-        // Remove runScale css
-        $(element).removeClass('runScale')
-        // Remove New Logo String
-        var logoStr = document.getElementById("logoStr");
-        logoStr && element.removeChild(logoStr);
-        // Hide tooltip
-        $('#gamesofaLogo').tooltip('hide');
-    });
+    function type() {
+        if (i < tokens.length) {
+            el.html(tokens.slice(0, i + 1).join(''));
+            i++;
+            setTimeout(type, typingSpeed);
+        } else {
+            setTimeout(deleteText, pauseDuration);
+        }
+    }
+
+    function deleteText() {
+        if (i > 0) {
+            el.html(tokens.slice(0, i - 1).join(''));
+            i--;
+            setTimeout(deleteText, deletingSpeed);
+        } else {
+            setTimeout(type, pauseDuration / 2);
+        }
+    }
+
+    type();
 }
